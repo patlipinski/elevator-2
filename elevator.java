@@ -1,27 +1,106 @@
+// WARNING: This file is auto-generated and any changes to it will be overwritten
 
+/**
+ * provide a simple elevator
+ */
 public class elevator
 {
-    // instance variables - replace the example below with your own
-    private int current_floor;
-    private int top_floor;
+    private int current_floor = 0;
+    private int occupants = 0;
+    private int top_floor = 7;
+    private int bottom_floor = 0;
+    private int capacity = 5;
 
+    /**
+     * make a new elevator
+     */
     public elevator()
     {
         current_floor = 0;
         top_floor = 11;
     }
 
-    public void ascend() {
-        // tell the lift to go up
-        // add 1 on to the current_floor
-        // if current floor less than top_floor
+    /**
+     * lift goes up one floor at a time as far as the top floor only
+     */
+    public void ascend()
+    {
+        /* tell the lift to go up add 1 on to the current_floor if current floor less than top_floor*/
         if (current_floor < top_floor) {
             current_floor = current_floor + 1;
         }
         else {
+            /* else display error message*/
             System.out.println("Sorry you are at the top!");
         }
-        // else display error message
     }
 
+    /**
+     * lift goes down one floor at a time as far as the bottom floor only
+     */
+    public void descend()
+    {
+        /* tell the lift to go down subtract 1 from the current_floor if current floor above th bottom_floor*/
+        if (current_floor > bottom_floor) {
+            current_floor = current_floor - 1;
+        }
+        else {
+            /* else display error message*/
+            System.out.println("Sorry you are at the bottom!");
+        }
+    }
+
+    /**
+     * lift is boarded by one more person up to the max
+     */
+    public void board()
+    {
+        /* */
+        if (occupants < capacity) {
+            occupants = occupants + 1;
+        }
+        else {
+            /* else display error message*/
+            System.out.println("Sorry lift is full!");
+        }
+    }
+
+    /**
+     * people leave until lift is empty
+     */
+    public void exit()
+    {
+        /* */
+        if (occupants > 0) {
+            occupants = occupants - 1;
+        }
+        else {
+            /* else display error message*/
+            System.out.println("Sorry lift is empty!");
+        }
+    }
+
+    /**
+     * display the current lift status: location and load
+     */
+    public void displayLift()
+    {
+        System.out.println("Floor : " + current_floor + " People : " + occupants);
+    }
+
+    /**
+     * get the current floor
+     */
+    public int getFloor()
+    {
+        return current_floor;
+    }
+
+    /**
+     * get the current number of occupants
+     */
+    public int getOccupants()
+    {
+        return occupants;
+    }
 }

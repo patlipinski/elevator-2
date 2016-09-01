@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class name="elevator" enable="true" strideversion="1">
+    <javadoc xml:space="preserve">provide a simple elevator</javadoc>
+    <imports/>
+    <implements/>
+    <fields>
+        <variable access="private" type="int" type-java="int" name="current_floor" value="0" value-java="0" enable="true"/>
+        <variable access="private" type="int" type-java="int" name="occupants" value="0" value-java="0" enable="true"/>
+        <variable access="private" type="int" type-java="int" name="top_floor" value="7" value-java="7" enable="true"/>
+        <variable access="private" type="int" type-java="int" name="bottom_floor" value="0" value-java="0" enable="true"/>
+        <variable access="private" type="int" type-java="int" name="capacity" value="5" value-java="5" enable="true"/>
+    </fields>
+    <constructors>
+        <constructor access="public" enable="true">
+            <javadoc xml:space="preserve">make a new elevator</javadoc>
+            <params/>
+            <throws/>
+            <body>
+                <assign dest="current_floor" dest-java="current_floor" src="0" src-java="0" enable="true"/>
+                <assign dest="top_floor" dest-java="top_floor" src="11" src-java="11" enable="true"/>
+            </body>
+        </constructor>
+    </constructors>
+    <methods>
+        <method access="public" type="void" type-java="void" name="ascend" enable="true">
+            <javadoc xml:space="preserve">lift goes up one floor at a time as far as the top floor only</javadoc>
+            <params/>
+            <throws/>
+            <body>
+                <comment xml:space="preserve">tell the lift to go up add 1 on to the current_floor if current floor less than top_floor</comment>
+                <if condition="current_floor&lt;top_floor" condition-java="current_floor &lt; top_floor" enable="true">
+                    <ifStatements>
+                        <assign dest="current_floor" dest-java="current_floor" src="current_floor+1" src-java="current_floor + 1" enable="true"/>
+                    </ifStatements>
+                    <else>
+                        <comment xml:space="preserve">else display error message</comment>
+                        <call expression="System.out.println(&quot;Sorry you are at the top!&quot;)" expression-java="System.out.println(&quot;Sorry you are at the top!&quot;)" enable="true"/>
+                    </else>
+                </if>
+            </body>
+        </method>
+        <method access="public" type="void" type-java="void" name="descend" enable="true">
+            <javadoc xml:space="preserve">lift goes down one floor at a time as far as the bottom floor only</javadoc>
+            <params/>
+            <throws/>
+            <body>
+                <comment xml:space="preserve">tell the lift to go down subtract 1 from the current_floor if current floor above th bottom_floor</comment>
+                <if condition="current_floor&gt;bottom_floor" condition-java="current_floor &gt; bottom_floor" enable="true">
+                    <ifStatements>
+                        <assign dest="current_floor" dest-java="current_floor" src="current_floor-1" src-java="current_floor - 1" enable="true"/>
+                    </ifStatements>
+                    <else>
+                        <comment xml:space="preserve">else display error message</comment>
+                        <call expression="System.out.println(&quot;Sorry you are at the bottom!&quot;)" expression-java="System.out.println(&quot;Sorry you are at the bottom!&quot;)" enable="true"/>
+                    </else>
+                </if>
+            </body>
+        </method>
+        <method access="public" type="void" type-java="void" name="board" enable="true">
+            <javadoc xml:space="preserve">lift is boarded by one more person up to the max</javadoc>
+            <params/>
+            <throws/>
+            <body>
+                <comment xml:space="preserve"/>
+                <if condition="occupants&lt;capacity" condition-java="occupants &lt; capacity" enable="true">
+                    <ifStatements>
+                        <assign dest="occupants" dest-java="occupants" src="occupants+1" src-java="occupants + 1" enable="true"/>
+                    </ifStatements>
+                    <else>
+                        <comment xml:space="preserve">else display error message</comment>
+                        <call expression="System.out.println(&quot;Sorry lift is full!&quot;)" expression-java="System.out.println(&quot;Sorry lift is full!&quot;)" enable="true"/>
+                    </else>
+                </if>
+            </body>
+        </method>
+        <method access="public" type="void" type-java="void" name="exit" enable="true">
+            <javadoc xml:space="preserve">people leave until lift is empty</javadoc>
+            <params/>
+            <throws/>
+            <body>
+                <comment xml:space="preserve"/>
+                <if condition="occupants&gt;0" condition-java="occupants &gt; 0" enable="true">
+                    <ifStatements>
+                        <assign dest="occupants" dest-java="occupants" src="occupants-1" src-java="occupants - 1" enable="true"/>
+                    </ifStatements>
+                    <else>
+                        <comment xml:space="preserve">else display error message</comment>
+                        <call expression="System.out.println(&quot;Sorry lift is empty!&quot;)" expression-java="System.out.println(&quot;Sorry lift is empty!&quot;)" enable="true"/>
+                    </else>
+                </if>
+            </body>
+        </method>
+        <method access="public" type="void" type-java="void" name="displayLift" enable="true">
+            <javadoc xml:space="preserve">display the current lift status: location and load</javadoc>
+            <params/>
+            <throws/>
+            <body>
+                <call expression="System.out.println(&quot;Floor : &quot;+current_floor+&quot; People : &quot;+occupants)" expression-java="System.out.println(&quot;Floor : &quot; + current_floor + &quot; People : &quot; + occupants)" enable="true"/>
+            </body>
+        </method>
+        <method access="public" type="int" type-java="int" name="getFloor" enable="true">
+            <javadoc xml:space="preserve">get the current floor</javadoc>
+            <params/>
+            <throws/>
+            <body>
+                <return value="current_floor" value-java="current_floor" enable="true"/>
+            </body>
+        </method>
+        <method access="public" type="int" type-java="int" name="getOccupants" enable="true">
+            <javadoc xml:space="preserve">get the current number of occupants</javadoc>
+            <params/>
+            <throws/>
+            <body>
+                <return value="occupants" value-java="occupants" enable="true"/>
+            </body>
+        </method>
+    </methods>
+</class>
