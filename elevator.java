@@ -59,7 +59,7 @@ public class elevator
     {
         /* */
         if (occupants < capacity) {
-            occupants = occupants + 1;
+            occupants = occupants + newPassengers;
         }
         else {
             /* else display error message*/
@@ -74,7 +74,7 @@ public class elevator
     {
         /* */
         if (occupants > 0) {
-            occupants = occupants - 1;
+            occupants = occupants - leavingPassengers;
         }
         else {
             /* else display error message*/
