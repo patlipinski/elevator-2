@@ -1,4 +1,3 @@
-// WARNING: This file is auto-generated and any changes to it will be overwritten
 
 /**
  * provide a simple elevator
@@ -10,14 +9,13 @@ public class elevator
     private int top_floor = 7;
     private int bottom_floor = 0;
     private int capacity = 5;
+    private boolean goingUp = true;
 
     /**
      * make a new elevator
      */
     public elevator()
     {
-        current_floor = 0;
-        top_floor = 11;
     }
 
     /**
@@ -32,6 +30,8 @@ public class elevator
         else {
             /* else display error message*/
             System.out.println("Sorry you are at the top!");
+            goingUp = false;
+            descend();
         }
     }
 
@@ -47,13 +47,15 @@ public class elevator
         else {
             /* else display error message*/
             System.out.println("Sorry you are at the bottom!");
+            goingUp = true;
+            ascend();
         }
     }
 
     /**
      * lift is boarded by one more person up to the max
      */
-    public void board()
+    public void board(int newPassengers)
     {
         /* */
         if (occupants < capacity) {
@@ -68,7 +70,7 @@ public class elevator
     /**
      * people leave until lift is empty
      */
-    public void exit()
+    public void exit(int leavingPassengers)
     {
         /* */
         if (occupants > 0) {
@@ -102,5 +104,15 @@ public class elevator
     public int getOccupants()
     {
         return occupants;
+    }
+    
+    public void moveLift() {
+        if (goingUp == true) {
+            ascend();
+        }
+        else
+        {
+            descend();
+        }
     }
 }
